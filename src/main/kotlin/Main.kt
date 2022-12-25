@@ -1,6 +1,12 @@
 import java.util.*
 import kotlin.system.exitProcess
 
+class Data: Utils() {
+    override fun showList(lists: ArrayList<Food>, utils: Utils) {
+        super.showList(lists, utils)
+    }
+}
+
 fun main() {
     val input = Scanner(System.`in`)
 
@@ -15,6 +21,7 @@ fun main() {
     val fee = (5000..10000).random()
 
     val utils = Utils()
+    val data = Data()
 
     lists.addAll(FoodsData.listData)
 
@@ -34,10 +41,7 @@ fun main() {
         choice = input.next().toInt()
         when (choice) {
             1 -> {
-                for ((index, list) in lists.withIndex()) {
-                    println("${index + 1}. ${list.name} (${utils.convertToRupiah(list.price)})\n${list.description}")
-                    println("")
-                }
+                data.showList(lists, utils)
             }
 
             2 -> {
